@@ -10,6 +10,13 @@ TARGET = "fraud"
 NUMERIC_COLUMNS = ["step", "amount"]
 CATEGORICAL_COLUMNS = ["age", "gender", "category"]
 MODEL_COLUMNS = NUMERIC_COLUMNS + CATEGORICAL_COLUMNS
+
+
+def prepare_catboost_frame(frame: pd.DataFrame) -> pd.DataFrame:
+    prepared = frame[MODEL_COLUMNS].copy()
+    for column in CATEGORICAL_COLUMNS:
+        prepared[column] = prepared[column].astype("string").fillna("__MISSING__").astype(str)
+    return prepared
 READ_COLUMNS = ["step", "age", "gender", "category", "amount", TARGET]
 
 

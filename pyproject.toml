@@ -8,6 +8,7 @@ version = "0.1.0"
 description = "Leakage-aware BankSim synthetic payment-fraud benchmark"
 requires-python = ">=3.11"
 dependencies = [
+  "catboost>=1.2.10,<2",
   "certifi>=2025.1",
   "fastapi>=0.115,<1",
   "joblib>=1.4,<2",

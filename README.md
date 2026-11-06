@@ -1,6 +1,8 @@
 # BankSim Synthetic Payment Fraud ML
 
-Standalone PyCharm project for the BankSim agent-based bank-payment dataset. It compares class-weighted logistic regression and random forest models using a chronological train/validation/test split.
+Standalone PyCharm project for the BankSim agent-based bank-payment dataset. It compares class-weighted
+logistic regression, random forest, and CatBoost using a chronological train/validation/test split.
+CatBoost keeps the dataset's categorical fields native instead of one-hot expanding them.
 
 ## Dataset
 
@@ -59,6 +61,8 @@ E. A. López-Rojas and S. Axelsson, “BankSim: A Bank Payment Simulation for Fr
 ## Current trained result
 
 Logistic regression was selected. On the latest 50,000-row simulation-period sample it achieved PR-AUC **0.7716**, ROC-AUC **0.9923**, precision **0.8757**, recall **0.5870**, and F1 **0.7029**. See [`outputs/metrics.json`](outputs/metrics.json) and [`outputs/model_comparison.csv`](outputs/model_comparison.csv).
+CatBoost was evaluated as a third candidate, but its validation PR-AUC (**0.7753**) did not exceed logistic
+regression (**0.7850**), so it was not selected.
 
 ![BankSim model comparison](outputs/model_comparison.png)
 
